@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Sliding Puzzle — EMZED</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <h1>Slide & Solve</h1>
+      <div class="meta">
+        <div class="counter"><span id="moves">0</span> moves</div>
+        <div class="timer">⏱ <span id="time">00:00</span></div>
+      </div>
+    </header>
+
+    <section class="controls">
+      <label class="file-label">
+        Upload image
+        <input id="imgInput" type="file" accept="image/*">
+      </label>
+
+      <div class="row">
+        <label>Difficulty</label>
+        <select id="sizeSelect" aria-label="Choose puzzle size">
+          <option value="3">3 × 3</option>
+          <option value="4" selected>4 × 4</option>
+          <option value="5">5 × 5</option>
+          <option value="6">6 × 6</option>
+          <option value="7">7 × 7</option>
+          <option value="8">8 × 8</option>
+        </select>
+      </div>
+
+      <div class="row buttons">
+        <button id="shuffleBtn" class="btn primary" disabled>Shuffle</button>
+        <button id="restartBtn" class="btn" disabled>Restart</button>
+      </div>
+    </section>
+
+    <section class="board-wrap">
+      <div id="board" class="board" aria-live="polite"></div>
+    </section>
+
+    <div id="winPopup" class="popup hidden" role="dialog" aria-modal="true">
+      <div class="popup-content">
+        <h2>Nice! You solved it 🎉</h2>
+        <p><strong>Time:</strong> <span id="finalTime"></span></p>
+        <p><strong>Moves:</strong> <span id="finalMoves"></span></p>
+        <button id="playAgain" class="btn primary">Play again</button>
+      </div>
+    </div>
+
+    <footer class="footer">Made for mobile — drag, tap or swipe tiles. Deploy to Vercel by connecting a repo.</footer>
+
+    <canvas id="hiddenCanvas" class="hidden"></canvas>
+
+  <script src="script.js"></script>
+  </main>
+</body>
+</html>
